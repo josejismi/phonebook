@@ -1,0 +1,263 @@
+:root {
+    --primary-color: #007aff;
+    --background-color: #f2f2f7;
+    --card-background: #fff;
+    --text-color: #1c1c1e;
+}
+
+body {
+    /* The new system font stack is applied here */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text-color);
+}
+
+/* Explicitly applying the font to form controls */
+input, button {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Mobile-first styling (default for smaller screens) */
+.mobile-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--card-background);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.view.active {
+    transform: translateX(0);
+}
+
+/* Header and search bar */
+header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header-top h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Add button styling */
+.add-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    line-height: 1;
+}
+
+.add-btn:hover {
+    background-color: #0056b3;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #d1d1d6;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Contact List */
+#contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e5ea;
+    gap: 15px;
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #c7c7cc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.contact-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.contact-phone {
+    font-size: 0.9rem;
+    color: #8e8e93;
+}
+
+.contact-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.contact-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #8e8e93;
+}
+
+/* Add/Edit Form View */
+.back-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-details input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #d1d1d6;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+#save-btn {
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+/* ---------------------------------------------------- */
+/* MEDIA QUERY for wider screens (Tablets, PCs) */
+/* ---------------------------------------------------- */
+@media (min-width: 600px) {
+    body {
+        background-color: #e5e5ea;
+    }
+
+    .mobile-container {
+        max-width: 800px;
+        height: auto;
+        display: flex;
+        border-radius: 12px;
+    }
+
+    .view {
+        position: relative;
+        transform: none;
+        flex-grow: 1;
+        width: 100%;
+        height: auto;
+    }
+
+    #contact-list-view {
+        border-right: 1px solid #d1d1d6;
+    }
+    
+    .view:not(.active) {
+        display: none;
+    }
+
+    .back-btn {
+        display: none;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    .header-top {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .header-top h1 {
+        font-size: 2.5rem;
+    }
+
+    #search-input {
+        flex-grow: 1;
+        margin-left: 0;
+    }
+
+    #contact-list {
+        min-height: 400px;
+    }
+}
